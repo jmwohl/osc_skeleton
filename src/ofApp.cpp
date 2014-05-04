@@ -47,6 +47,13 @@ void ofApp::update(){
             
             // REACT to the /mouse/moved message!
 		}
+        
+        // example of handling a /key/pressed message
+        if(m.getAddress() == "/key/pressed"){
+			cout << m.getRemoteIp() << " key pressed " << m.getArgAsInt32(0) << endl;
+            
+            // REACT to the /mouse/moved message!
+		}
 	}
 }
 
