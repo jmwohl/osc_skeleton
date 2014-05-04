@@ -34,6 +34,11 @@ void ofApp::update(){
         if(m.getAddress() == "/pulse"){
 			handlePulse(&m);
 		}
+        
+        // example of handling a /mouse/pressed message
+        if(m.getAddress() == "/mouse/pressed"){
+			cout << "mouse pressed at " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
+		}
 	}
 }
 
@@ -104,6 +109,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    cout << "mouse pressed locally" << endl;
     ofxOscMessage m;
     m.setAddress("/mouse/pressed");
     m.addIntArg(x);
