@@ -6,10 +6,13 @@
 #define PORT 8000
 
 // Replace with my own IP
-#define MY_IP 127.0.0.1
+#define MY_IP "127.0.0.1"
 
 // Replace with hub ID
-#define HUB_IP 10.0.88.129
+#define HUB_IP "10.0.88.129"
+
+// CALL_HOME_INTERVAL
+#define CALL_HOME_INTERVAL 5000;
 
 class ofApp : public ofBaseApp{
 
@@ -37,5 +40,6 @@ public:
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
     set<string> clients;
+    int lastCallHomeTime = 0;
 		
 };
