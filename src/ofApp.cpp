@@ -7,6 +7,9 @@ void ofApp::setup(){
     // initialize to HUB_IP for heartbeat?
     oscSender.setup(HUB_IP, PORT);
     
+    // initialize interval time
+    lastCallHomeTime = 0;
+    
 
 }
 
@@ -17,7 +20,7 @@ void ofApp::update(){
     
     if (time - lastCallHomeTime > CALL_HOME_INTERVAL) {
         lastCallHomeTime = time;
-        sendHeartbeat();
+        callHome();
     }
     
     
@@ -25,7 +28,7 @@ void ofApp::update(){
 	while(oscReceiver.hasWaitingMessages()){
 		// get the next message
 		ofxOscMessage m;
-		receiver.getNextMessage(&m);
+		oscReceiver.getNextMessage(&m);
         
         // handle heartbeat
         if(m.getAddress() == "/pulse"){
@@ -40,7 +43,7 @@ void ofApp::callHome() {
     ofxOscMessage m;
 	m.setAddress("/call/home");
 //	m.addStringArg(MY_IP);
-	sender.sendMessage(m);
+	oscSender.sendMessage(m);
 }
 
 void ofApp::handleHeartbeat(ofxOscMessage *m) {
