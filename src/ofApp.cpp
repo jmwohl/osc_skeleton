@@ -3,6 +3,11 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     oscReceiver.setup(PORT);
+    
+    // initialize to HUB_IP for heartbeat?
+    oscSender.setup(HUB_IP, PORT);
+    
+
 }
 
 //--------------------------------------------------------------
@@ -14,8 +19,8 @@ void ofApp::update(){
 		receiver.getNextMessage(&m);
         
         // handle heartbeat
-        if(m.getAddress() == "/heartbeat"){
-			handleHeartbeat(m);
+        if(m.getAddress() == "/pulse"){
+			handleHeartbeat(&m);
 		}
         
 		// check for mouse moved message
@@ -73,11 +78,12 @@ void ofApp::callHome() {
 	sender.sendMessage(m);
 }
 
-void ofApp::handleHeartbeat(ofxOscMessage &m) {
-    int numArgs = m.getNumArgs();
+void ofApp::handleHeartbeat(ofxOscMessage *m) {
+    int numArgs = m->getNumArgs();
     for(int i=0; i<numArgs; i++) {
-        string ip = m.getArgAsString(i);
+        string ip = m->getArgAsString(i);
         clients.insert(ip);
+        ofLog("Heatbeat: " + ip);
     }
 }
 

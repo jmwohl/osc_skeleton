@@ -29,7 +29,7 @@ public:
     void gotMessage(ofMessage msg);
     
     void callHome();
-    void handleHeartbeat(ofxOscMessage m);
+    void handleHeartbeat(ofxOscMessage *m);
     
     void handleAnyRoute();
     
