@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "oscClient.h"
 
 #define PORT 8000
 
@@ -32,14 +33,16 @@ public:
     void gotMessage(ofMessage msg);
     
     void callHome();
-    void handleHeartbeat(ofxOscMessage *m);
-    
+    void handlePulse(ofxOscMessage *m);
+    void sendMessage(ofxOscMessage &m);
     void handleAnyRoute();
     
 
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
-    set<string> clients;
+    
+    set<string> clientIps;
+    map<string, oscClient> clients;
     int lastCallHomeTime;
 		
 };

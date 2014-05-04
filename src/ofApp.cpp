@@ -32,7 +32,7 @@ void ofApp::update(){
         
         // handle heartbeat
         if(m.getAddress() == "/pulse"){
-			handleHeartbeat(&m);
+			handlePulse(&m);
 		}
 	}
 }
@@ -42,22 +42,43 @@ void ofApp::callHome() {
     
     ofxOscMessage m;
 	m.setAddress("/call/home");
-//	m.addStringArg(MY_IP);
 	oscSender.sendMessage(m);
 }
 
-void ofApp::handleHeartbeat(ofxOscMessage *m) {
+void ofApp::handlePulse(ofxOscMessage *m) {
+    // the pulse message passes along all client IPs that have registered with the hub
+    // so that we can register them in each individual client node, removing the reliance
+    // on the central hub to pass messages.
     int numArgs = m->getNumArgs();
     for(int i=0; i<numArgs; i++) {
         string ip = m->getArgAsString(i);
-        clients.insert(ip);
         
-        cout << "Heatbeat: " + ip << endl;
+        // Check to see if this IP already is registered as a client
+        map<string, oscClient>::iterator it = clients.find(ip);
+        oscClient cl;
+        if(it == clients.end()) {
+            // no client found for this IP, add it to the map of clients.
+            cout << "registering new client" << endl;
+            clientIps.insert(ip);
+            ofxOscSender & _sender = clients[ip].sender;
+            _sender.setup(ip, PORT);
+        }
     }
 }
 
 void ofApp::handleAnyRoute() {
     
+}
+
+void ofApp::sendMessage(ofxOscMessage &m) {
+    
+    // here we iterate through the registered clients, sending the heartbeat message to them all.
+    
+    for(map<string, oscClient>::iterator i = clients.begin(); i != clients.end(); i++) {
+        ofxOscSender & _sender = i->second.sender;
+        cout << "sending " << m.getAddress() << " to " << i->first << endl;
+        _sender.sendMessage(m);
+    }
 }
 
 //--------------------------------------------------------------
@@ -87,7 +108,11 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    ofxOscMessage m;
+    m.setAddress("/mouse/pressed");
+    m.addIntArg(x);
+    m.addIntArg(y);
+    sendMessage(m);
 }
 
 //--------------------------------------------------------------
