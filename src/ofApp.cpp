@@ -37,11 +37,15 @@ void ofApp::update(){
         // example of handling a /mouse/pressed message
         if(m.getAddress() == "/mouse/moved"){
 			cout << m.getRemoteIp() << " mouse moved to " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
+            
+            // REACT to the /mouse/pressed message!
 		}
         
         // example of handling a /mouse/moved message
         if(m.getAddress() == "/mouse/pressed"){
 			cout << m.getRemoteIp() << " mouse pressed at " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
+            
+            // REACT to the /mouse/moved message!
 		}
 	}
 }
