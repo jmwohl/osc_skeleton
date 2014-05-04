@@ -35,7 +35,6 @@ public:
     void callHome();
     void handlePulse(ofxOscMessage *m);
     void sendMessage(ofxOscMessage &m);
-    void handleAnyRoute();
     
 
     ofxOscReceiver oscReceiver;

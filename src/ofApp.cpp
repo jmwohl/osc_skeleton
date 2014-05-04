@@ -66,10 +66,6 @@ void ofApp::handlePulse(ofxOscMessage *m) {
     }
 }
 
-void ofApp::handleAnyRoute() {
-    
-}
-
 void ofApp::sendMessage(ofxOscMessage &m) {
     
     // here we iterate through the registered clients, sending the heartbeat message to them all.
