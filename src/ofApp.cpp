@@ -54,6 +54,9 @@ void ofApp::handlePulse(ofxOscMessage *m) {
     // the pulse message passes along all client IPs that have registered with the hub
     // so that we can register them in each individual client node, removing the reliance
     // on the central hub to pass messages.
+    
+    cout << "pulse received" << endl;
+    
     int numArgs = m->getNumArgs();
     for(int i=0; i<numArgs; i++) {
         string ip = m->getArgAsString(i);
