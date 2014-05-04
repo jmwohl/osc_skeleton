@@ -23,7 +23,6 @@ void ofApp::update(){
         callHome();
     }
     
-    
     // check for waiting messages
 	while(oscReceiver.hasWaitingMessages()){
 		// get the next message
@@ -36,8 +35,13 @@ void ofApp::update(){
 		}
         
         // example of handling a /mouse/pressed message
+        if(m.getAddress() == "/mouse/moved"){
+			cout << m.getRemoteIp() << " mouse moved to " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
+		}
+        
+        // example of handling a /mouse/moved message
         if(m.getAddress() == "/mouse/pressed"){
-			cout << "mouse pressed at " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
+			cout << m.getRemoteIp() << " mouse pressed at " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
 		}
 	}
 }
@@ -102,7 +106,12 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+    cout << "mouse moved locally" << endl;
+    ofxOscMessage m;
+    m.setAddress("/mouse/moved");
+    m.addIntArg(x);
+    m.addIntArg(y);
+    sendMessage(m);
 }
 
 //--------------------------------------------------------------
