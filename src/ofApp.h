@@ -7,7 +7,8 @@
 #define PORT 8000
 
 // Replace with my own IP
-#define MY_IP "127.0.0.1"
+// NOT NEEDED, HUB detects IPs.
+// #define MY_IP "127.0.0.1"
 
 // Replace with hub ID
 #define HUB_IP "10.88.0.128"
