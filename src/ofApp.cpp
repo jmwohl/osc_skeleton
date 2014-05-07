@@ -9,7 +9,6 @@ void ofApp::setup(){
     
     // initialize interval time
     lastHeartbeatTime = 0;
-
 }
 
 //--------------------------------------------------------------
@@ -58,7 +57,6 @@ void ofApp::update(){
 
 void ofApp::heartbeat() {
     cout << "sending heartbeat" << endl;
-    
     ofxOscMessage m;
 	m.setAddress("/heartbeat");
 	oscSender.sendMessage(m);
@@ -69,22 +67,17 @@ void ofApp::handleHeartbeat(ofxOscMessage *m) {
     // so that we can register them in each individual client node, removing the reliance
     // on the central hub to pass messages.
     
-    cout << "heartbeat received" << endl;
-    
-    int numArgs = m->getNumArgs();
-    for(int i=0; i<numArgs; i++) {
-        string ip = m->getArgAsString(i);
+    string ip = m->getRemoteIp();
+
+    cout << "heartbeat received from " << ip << endl;
         
-        // Check to see if this IP already is registered as a client
-        if(ip != MY_IP_ADDRESS){
-            map<string, ofxOscSender>::iterator it = clients.find(ip);
-            if(it == clients.end()) {
-                // no client found for this IP, add it to the map of clients.
-                cout << "registering new client" << endl;
-                ofxOscSender _sender;
-                _sender.setup(ip, PORT);
-                clients[ip] = _sender;
-            }
+    // Check to see if this IP already is registered as a client
+    if(ip != MY_IP_ADDRESS){
+        map<string, ofxOscSender>::iterator it = clients.find(ip);
+        if(it == clients.end()) {
+            // no client found for this IP, add it to the map of clients.
+            cout << "registering new client" << endl;
+            clients[ip].setup(ip, PORT);
         }
     }
 }
@@ -119,7 +112,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    cout << "mouse moved locally" << endl;
+    // cout << "mouse moved locally" << endl;
     ofxOscMessage m;
     m.setAddress("/mouse/moved");
     m.addIntArg(x);
@@ -134,7 +127,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    cout << "mouse pressed locally" << endl;
+    //cout << "mouse pressed locally" << endl;
     ofxOscMessage m;
     m.setAddress("/mouse/pressed");
     m.addIntArg(x);
