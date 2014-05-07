@@ -5,11 +5,9 @@
 
 #define PORT 8000
 
-// Replace with hub ID
-#define HUB_IP "127.0.0.1"
+#define HEARTBEAT_INTERVAL 5000
 
-// CALL_HOME_INTERVAL
-#define CALL_HOME_INTERVAL 5000
+#define MY_IP_ADDRESS "10.88.0.134"
 
 class ofApp : public ofBaseApp{
 
@@ -28,8 +26,8 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    void callHome();
-    void handlePulse(ofxOscMessage *m);
+    void heartbeat();
+    void handleHeartbeat(ofxOscMessage *m);
     void sendMessage(ofxOscMessage &m);
     
 
@@ -37,6 +35,6 @@ public:
     ofxOscSender oscSender;
     
     map<string, ofxOscSender> clients;
-    int lastCallHomeTime;
+    int lastHeartbeatTime;
 		
 };
