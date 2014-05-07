@@ -2,16 +2,11 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
-#include "oscClient.h"
 
 #define PORT 8000
 
-// Replace with my own IP
-// NOT NEEDED, HUB detects IPs.
-// #define MY_IP "127.0.0.1"
-
 // Replace with hub ID
-#define HUB_IP "10.88.0.128"
+#define HUB_IP "127.0.0.1"
 
 // CALL_HOME_INTERVAL
 #define CALL_HOME_INTERVAL 5000
@@ -41,8 +36,7 @@ public:
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
     
-    set<string> clientIps;
-    map<string, oscClient> clients;
+    map<string, ofxOscSender> clients;
     int lastCallHomeTime;
 		
 };
