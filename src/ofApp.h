@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 #include "ofxUI.h"
+#include "ofxXmlSettings.h"
 
 #define PORT 8000
 

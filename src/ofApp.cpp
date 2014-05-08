@@ -118,9 +118,11 @@ void ofApp::sendMessage(ofxOscMessage &m) {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(int i =0; i<20; i++){
-        string msg = messages[messages.size()-i];
-        ofDrawBitmapStringHighlight(msg, 20, y+=20);
+    if(messages.size()){
+        for(int i =0; i<20; i++){
+            string msg = messages[messages.size()-1-i];
+            ofDrawBitmapStringHighlight(msg, 20, y+=20);
+        }
     }
 }
 

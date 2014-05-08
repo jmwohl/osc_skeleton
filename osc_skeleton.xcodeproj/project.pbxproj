@@ -64,6 +64,10 @@
 		B6092A81191AFEF7005A378B /* ofxUIWaveform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A50191AFEF7005A378B /* ofxUIWaveform.cpp */; };
 		B6092A82191AFEF7005A378B /* ofxUIWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A52191AFEF7005A378B /* ofxUIWidget.cpp */; };
 		B6092A83191AFEF7005A378B /* ofxUIWidgetWithLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A55191AFEF7005A378B /* ofxUIWidgetWithLabel.cpp */; };
+		B6092A8D191B03E3005A378B /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A86191B03E3005A378B /* ofxXmlSettings.cpp */; };
+		B6092A8E191B03E3005A378B /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A89191B03E3005A378B /* tinyxml.cpp */; };
+		B6092A8F191B03E3005A378B /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A8B191B03E3005A378B /* tinyxmlerror.cpp */; };
+		B6092A90191B03E3005A378B /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6092A8C191B03E3005A378B /* tinyxmlparser.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -236,6 +240,12 @@
 		B6092A55191AFEF7005A378B /* ofxUIWidgetWithLabel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUIWidgetWithLabel.cpp; sourceTree = "<group>"; };
 		B6092A56191AFEF7005A378B /* ofxUIWidgetWithLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUIWidgetWithLabel.h; sourceTree = "<group>"; };
 		B6092A57191AFEF7005A378B /* ofxUIWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUIWrapper.h; sourceTree = "<group>"; };
+		B6092A86191B03E3005A378B /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		B6092A87191B03E3005A378B /* ofxXmlSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		B6092A89191B03E3005A378B /* tinyxml.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		B6092A8A191B03E3005A378B /* tinyxml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		B6092A8B191B03E3005A378B /* tinyxmlerror.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		B6092A8C191B03E3005A378B /* tinyxmlparser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		BC8881B3C8C0A1C45F042E7A /* OscPrintReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscPrintReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
 		C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOscReceiver.cpp; path = ../../../addons/ofxOsc/src/ofxOscReceiver.cpp; sourceTree = SOURCE_ROOT; };
@@ -451,6 +461,37 @@
 			path = ../../../addons/ofxUI/src;
 			sourceTree = "<group>";
 		};
+		B6092A84191B03E3005A378B /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				B6092A85191B03E3005A378B /* src */,
+				B6092A88191B03E3005A378B /* libs */,
+			);
+			name = ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		B6092A85191B03E3005A378B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B6092A86191B03E3005A378B /* ofxXmlSettings.cpp */,
+				B6092A87191B03E3005A378B /* ofxXmlSettings.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxXmlSettings/src;
+			sourceTree = "<group>";
+		};
+		B6092A88191B03E3005A378B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				B6092A89191B03E3005A378B /* tinyxml.cpp */,
+				B6092A8A191B03E3005A378B /* tinyxml.h */,
+				B6092A8B191B03E3005A378B /* tinyxmlerror.cpp */,
+				B6092A8C191B03E3005A378B /* tinyxmlparser.cpp */,
+			);
+			name = libs;
+			path = ../../../addons/ofxXmlSettings/libs;
+			sourceTree = "<group>";
+		};
 		BA6760AC87647DD61A92BD41 /* win32 */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +504,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				B6092A84191B03E3005A378B /* ofxXmlSettings */,
 				B60929F8191AFEF7005A378B /* ofxUI */,
 				E6053AB7FEC63D5F83825B88 /* ofxOsc */,
 			);
@@ -694,9 +736,11 @@
 				B6092A5D191AFEF7005A378B /* ofxUICanvas.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */,
+				B6092A8D191B03E3005A378B /* ofxXmlSettings.cpp in Sources */,
 				5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */,
 				B6092A5B191AFEF7005A378B /* ofxUIBiLabelSlider.cpp in Sources */,
 				B6092A80191AFEF7005A378B /* ofxUIValuePlotter.cpp in Sources */,
+				B6092A8F191B03E3005A378B /* tinyxmlerror.cpp in Sources */,
 				4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */,
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,
 				B6092A64191AFEF7005A378B /* ofxUIImage.cpp in Sources */,
@@ -720,12 +764,14 @@
 				B6092A77191AFEF7005A378B /* ofxUISortableList.cpp in Sources */,
 				B6092A70191AFEF7005A378B /* ofxUINumberDialer.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
+				B6092A90191B03E3005A378B /* tinyxmlparser.cpp in Sources */,
 				B6092A63191AFEF7005A378B /* ofxUIFPSSlider.cpp in Sources */,
 				B6092A58191AFEF7005A378B /* ofxUI2DGraph.cpp in Sources */,
 				B6092A76191AFEF7005A378B /* ofxUISlider.cpp in Sources */,
 				B6092A65191AFEF7005A378B /* ofxUIImageButton.cpp in Sources */,
 				B6092A71191AFEF7005A378B /* ofxUIRadio.cpp in Sources */,
 				B6092A6D191AFEF7005A378B /* ofxUIMovingGraph.cpp in Sources */,
+				B6092A8E191B03E3005A378B /* tinyxml.cpp in Sources */,
 				B6092A6E191AFEF7005A378B /* ofxUIMultiImageButton.cpp in Sources */,
 				B6092A79191AFEF7005A378B /* ofxUISpectrum.cpp in Sources */,
 				B6092A67191AFEF7005A378B /* ofxUIImageSlider.cpp in Sources */,
@@ -924,6 +970,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
+				OFX_UI_NO_XML = "\"YUP\"";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
@@ -1010,6 +1057,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
+				OFX_UI_NO_XML = "\"YUP\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
