@@ -44,13 +44,11 @@ void ofApp::update(){
             
             // REACT to the /mouse/moved message!
 		}
-
+        }
         // handle chat message
         if(m.getAddress() == "/chat"){
 			handleChat(&m);
 		}
-        }
-
 	}
 }
 
@@ -64,10 +62,11 @@ void ofApp::handleChat(ofxOscMessage *m) {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    y = 0;
     if(messages.size()){
         for(int i =0; i<MIN(messages.size(),20); i++){
             string msg = messages[messages.size()-1-i];
-            ofDrawBitmapStringHighlight(msg, 20, y+=20);
+            ofDrawBitmapStringHighlight(msg, 220, y+=20);
         }
     }
 }
