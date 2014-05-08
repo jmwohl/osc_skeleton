@@ -9,6 +9,10 @@ void ofApp::setup(){
     
     // initialize interval time
     lastHeartbeatTime = 0;
+
+    gui = new ofxUICanvas();
+    gui->addTextInput("CHAT:", chat)->setAutoClear(false);
+    y = 20;
 }
 
 //--------------------------------------------------------------
@@ -52,6 +56,12 @@ void ofApp::update(){
             
             // REACT to the /mouse/moved message!
 		}
+
+        // handle chat message
+        if(m.getAddress() == "/chat"){
+			handleChat(&m);
+		}
+
 	}
 }
 
@@ -82,6 +92,17 @@ void ofApp::handleHeartbeat(ofxOscMessage *m) {
     }
 }
 
+void ofApp::handleChat(ofxOscMessage *m) {
+    string ip = m->getRemoteIp();
+    string message = m->getArgAsString(0);
+
+    // Check to see if this IP already is registered as a client
+    if(ip != MY_IP_ADDRESS){
+        messages.push_back(ip + message);
+    }
+}
+
+
 void ofApp::sendMessage(ofxOscMessage &m) {
     
     // here we iterate through the registered clients, sending the heartbeat message to them all.
@@ -97,7 +118,10 @@ void ofApp::sendMessage(ofxOscMessage &m) {
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    for(int i =0; i<20; i++){
+        string msg = messages[messages.size()-i];
+        ofDrawBitmapStringHighlight(msg, 20, y+=20);
+    }
 }
 
 //--------------------------------------------------------------
@@ -152,5 +176,28 @@ void ofApp::gotMessage(ofMessage msg){
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
+
+}
+
+void ofApp::exit()
+{
+  delete gui;
+}
+
+void ofApp::guiEvent(ofxUIEventArgs &e)
+{
+    string ev = e.widget->getName();
+    if (ev == "CHAT"){
+        ofxUITextInput *text = (ofxUITextInput *) e.widget;
+
+        if(text->getInputTriggerType() == OFX_UI_TEXTINPUT_ON_ENTER)
+        {
+            string message = text->getTextString();
+            ofxOscMessage m;
+            m.setAddress("/message");
+            m.addStringArg(message);
+            sendMessage(m);
+        }
+    }
 
 }

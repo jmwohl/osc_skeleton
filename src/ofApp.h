@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "ofxUI.h"
 
 #define PORT 8000
 
@@ -36,5 +37,14 @@ public:
     
     map<string, ofxOscSender> clients;
     int lastHeartbeatTime;
+
+    // gui for chat input
+    ofxUICanvas *gui;
+    void exit();
+    void guiEvent(ofxUIEventArgs &e);
+    string chat;
+    void handleChat(ofxOscMessage *m);
+    vector<string> messages;
+    int y;
 		
 };
