@@ -11,7 +11,8 @@ void ofApp::setup(){
     lastHeartbeatTime = 0;
 
     gui = new ofxUICanvas();
-    gui->addTextInput("CHAT:", chat)->setAutoClear(false);
+    gui->addTextInput("CHAT", chat)->setAutoClear(false);
+    ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
     y = 20;
 }
 
@@ -189,6 +190,7 @@ void ofApp::exit()
 void ofApp::guiEvent(ofxUIEventArgs &e)
 {
     string ev = e.widget->getName();
+    cout << ev << endl;
     if (ev == "CHAT"){
         ofxUITextInput *text = (ofxUITextInput *) e.widget;
 
@@ -196,7 +198,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         {
             string message = text->getTextString();
             ofxOscMessage m;
-            m.setAddress("/message");
+            m.setAddress("/chat");
             m.addStringArg(message);
             sendMessage(m);
         }
