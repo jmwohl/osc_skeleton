@@ -23,7 +23,7 @@ void ofApp::update(){
 		oscReceiver.getNextMessage(&m);
         
         if(m.getRemoteIp() != MY_IP_ADDRESS){
-                
+            
         // example of handling a /mouse/pressed message
         if(m.getAddress() == "/mouse/moved"){
 			cout << m.getRemoteIp() << " mouse moved to " << m.getArgAsInt32(0) << ", " << m.getArgAsInt32(1) << endl;
@@ -65,7 +65,7 @@ void ofApp::handleChat(ofxOscMessage *m) {
 //--------------------------------------------------------------
 void ofApp::draw(){
     if(messages.size()){
-        for(int i =0; i<20; i++){
+        for(int i =0; i<MIN(messages.size(),20); i++){
             string msg = messages[messages.size()-1-i];
             ofDrawBitmapStringHighlight(msg, 20, y+=20);
         }
