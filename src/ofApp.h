@@ -7,7 +7,7 @@
 
 // You can get your IP address by running the following at the command line (look for addr:[your IP])
 // ifconfig | grep inet | grep 127.0.0.1 --invert-match
-#define MY_IP_ADDRESS "10.88.0.134"
+#define MY_IP_ADDRESS "10.88.0.108"
 
 class ofApp : public ofBaseApp{
 

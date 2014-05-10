@@ -37,7 +37,7 @@ void ofApp::update(){
             if(m.getAddress() == "/key/pressed"){
                 cout << m.getRemoteIp() << " key pressed " << m.getArgAsInt32(0) << endl;
                 
-                // REACT to the /mouse/moved message!
+                // REACT to the /key/pressed message!
             }
         }
 	}
@@ -51,7 +51,10 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    ofxOscMessage m;
+    m.setAddress("/key/pressed");
+    m.addIntArg(key);
+    oscSender.sendMessage(m);
 }
 
 //--------------------------------------------------------------
@@ -61,7 +64,6 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    // cout << "mouse moved locally" << endl;
     ofxOscMessage m;
     m.setAddress("/mouse/moved");
     m.addIntArg(x);
@@ -76,7 +78,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    //cout << "mouse pressed locally" << endl;
     ofxOscMessage m;
     m.setAddress("/mouse/pressed");
     m.addIntArg(x);
