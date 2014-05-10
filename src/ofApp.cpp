@@ -5,7 +5,7 @@ void ofApp::setup(){
     oscReceiver.setup(PORT);
     
     // broadcast
-    oscSender.setup("10.88.0.255", PORT);
+    oscSender.setup(BROADCAST_IP, PORT);
 }
 
 //--------------------------------------------------------------
@@ -17,6 +17,7 @@ void ofApp::update(){
 		ofxOscMessage m;
 		oscReceiver.getNextMessage(&m);
         
+        // This is to ensure we're not reacting to our own messages
         if(m.getRemoteIp() != MY_IP_ADDRESS) {
             
             // example of handling a /mouse/pressed message

@@ -5,11 +5,12 @@
 
 #define PORT 8000
 
-// You can get your IP address by running the following at the command line (look for addr:[your IP])
+// You can find these IP addresses by running the following at the command line
 // ifconfig | grep inet | grep 127.0.0.1 --invert-match
 #define MY_IP_ADDRESS "10.88.0.108"
+#define BROADCAST_IP "10.88.0.255"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 
 public:
     void setup();
