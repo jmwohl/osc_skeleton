@@ -2,11 +2,11 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
-#include "ofxUI.h"
-#include "ofxXmlSettings.h"
 
 #define PORT 8000
 
+// You can get your IP address by running the following at the command line (look for addr:[your IP])
+// ifconfig | grep inet | grep 127.0.0.1 --invert-match
 #define MY_IP_ADDRESS "10.88.0.134"
 
 class ofApp : public ofBaseApp{
@@ -28,13 +28,5 @@ public:
     
     ofxOscReceiver oscReceiver;
     ofxOscSender oscSender;
-    
-    // gui for chat input
-    ofxUICanvas *gui;
-    void exit();
-    void guiEvent(ofxUIEventArgs &e);
-    string chat;
-    void handleChat(ofxOscMessage *m);
-    vector<string> messages;
-    int y;
+
 };
